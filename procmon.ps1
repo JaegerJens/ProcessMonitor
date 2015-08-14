@@ -7,5 +7,5 @@ while($true)
 	$proclist = Get-Process | ? { $_.ProcessName -Contains $procname }
 	$datalist = $proclist | % { $_ | Add-Member @{Timestamp=$timestamp} -PassThru }
 	$datalist | Select Timestamp,ID,ProcessName,CPU,WS | Export-Csv -Append -Path "$($procname).log"
-	Start-Sleep 10
+	Start-Sleep $intervall
 }
